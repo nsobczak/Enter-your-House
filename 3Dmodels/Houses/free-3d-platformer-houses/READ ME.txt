@@ -1,0 +1,29 @@
+all used textures are CC0, some normalmaps are from the submitterers, the rest is self-made out of the textures
+
+
+grass_2.jpg
+based on http://opengameart.org/content/synthetic-grass-texture-pack, by para
+
+stonetiles_00*
+http://opengameart.org/content/pietextureset, by Spiney
+
+stone1.png
+http://opengameart.org/content/free-tilling-textures-41,  by yughues
+
+roof_red.jpg
+roof_black.jpg
+http://opengameart.org/content/tilling-texture-pack-19,  by yughues
+
+wood2.png
+wood3.png
+window- and door-textures
+based on images from http://www.burningwell.org
+
+wood4.jpg
+wood5.jpg
+http://opengameart.org/content/5-wood-textures, by Luke.RUSTLTD
+
+
+house_wall
+house_wall_red
+selfmade
