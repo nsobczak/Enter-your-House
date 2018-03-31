@@ -12,5 +12,11 @@
 				"Engine"
 			]
 		}
+	],
+	"TargetPlatforms": [
+		"AllDesktop",
+		"HTML5",
+		"LinuxNoEditor",
+		"WindowsNoEditor"
 	]
 }
