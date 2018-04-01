@@ -4,7 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
+#include "Components/InputComponent.h"
+#include "Components/PrimitiveComponent.h"
 #include "DrawDebugHelpers.h"
+#include "PhysicsEngine/PhysicsHandleComponent.h"
 #include "Grabber.generated.h"
 
 
@@ -13,20 +16,39 @@ class ENTER_YOUR_HOME_API UGrabber : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this component's properties
-	UGrabber();
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 private:
 	UPROPERTY(EditAnywhere)
 		float reachLimit = 100;
+
+	UPhysicsHandleComponent* physicsHandleComponent = nullptr;
+
+	UInputComponent* inputComponent = nullptr;
+
+	//raycasts and grabs what's in reach
+	void Grab();
+	//grab is released
+	void Release();
+
+
+protected:
+	void FindPhysicsHandleComponent();
+	void FindInputComponent();
+
+	const FVector getReachLineTraceStart();
+	const FVector getReachLineTraceEnd();
+
+	const FHitResult GetFirstPhysicsBodyInReach();
+
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+
+public:
+	// Sets default values for this component's properties
+	UGrabber();
+
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
 };

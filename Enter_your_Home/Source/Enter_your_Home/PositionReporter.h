@@ -12,18 +12,14 @@ class ENTER_YOUR_HOME_API UPositionReporter : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this component's properties
-	UPositionReporter();
-
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 public:
+	// Sets default values for this component's properties
+	UPositionReporter();
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
-
 
 };

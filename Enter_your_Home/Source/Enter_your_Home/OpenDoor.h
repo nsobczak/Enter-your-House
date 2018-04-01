@@ -13,21 +13,6 @@ class ENTER_YOUR_HOME_API UOpenDoor : public UActorComponent
 {
 	GENERATED_BODY()
 
-public:
-	// Sets default values for this component's properties
-	UOpenDoor();
-
-protected:
-	// Called when the game starts
-	virtual void BeginPlay() override;
-
-	void OpenDoor();
-	void CloseDoor();
-
-public:
-	// Called every frame
-	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
-
 private:
 	UPROPERTY(EditAnywhere)
 		float closeAngle = 0;
@@ -39,4 +24,19 @@ private:
 
 	UPROPERTY(EditAnywhere)
 		AActor* actorThatOpens;
+
+protected:
+	// Called when the game starts
+	virtual void BeginPlay() override;
+
+	void OpenDoor();
+	void CloseDoor();
+
+public:
+	// Sets default values for this component's properties
+	UOpenDoor();
+	// Called every frame
+	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
+
+
 };
