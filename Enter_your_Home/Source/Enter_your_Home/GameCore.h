@@ -5,7 +5,7 @@
 #include "CoreMinimal.h"
 #include "Components/ActorComponent.h"
 #include "Engine/TriggerVolume.h"
-#include "Engine/TriggerVolume.h"
+
 #include "GameCore.generated.h"
 
 
@@ -20,11 +20,13 @@ private:
 	UPROPERTY(EditAnywhere)
 		AActor* actorThatTrigger;
 
+
 protected:
 	// Called when the game starts
 	virtual void BeginPlay() override;
 
 	void GameWin();
+
 
 public:
 	// Sets default values for this component's properties
@@ -33,6 +35,6 @@ public:
 	// Called every frame
 	virtual void TickComponent(float DeltaTime, ELevelTick TickType, FActorComponentTickFunction* ThisTickFunction) override;
 
-
-
+	UPROPERTY(BlueprintReadWrite)
+	bool isGameFinished;
 };

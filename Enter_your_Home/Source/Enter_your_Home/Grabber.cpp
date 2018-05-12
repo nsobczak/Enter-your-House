@@ -86,8 +86,8 @@ void UGrabber::Grab() {
 
 	///if we hit smthg then attach a physics handle
 	if (actorHit)
-		this->physicsHandleComponent->GrabComponent(componentToGrab, NAME_None,
-			componentToGrab->GetOwner()->GetActorLocation(), true);
+		this->physicsHandleComponent->GrabComponentAtLocation(componentToGrab, NAME_None,
+			componentToGrab->GetOwner()->GetActorLocation());
 };
 
 // grab is released
