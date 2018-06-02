@@ -18,7 +18,7 @@ class ENTER_YOUR_HOME_API AMenuPlayerController : public APlayerController
 	
 public:
 	// Sets default values for this actor's properties
-	UPROPERTY(EditDefaultsOnly, BlueprintReadWrite)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int activeWidgetIndexChild = 0;
 
 	// Reference UMG Asset in the Editor
@@ -26,7 +26,7 @@ public:
 		TSubclassOf<class UUserWidget> wMainMenu;
 
 	// Variable to hold the widget After Creating it.
-	UPROPERTY(VisibleAnywhere)
+	UPROPERTY(EditAnywhere)
 	UUserWidget* MyMainMenu;
 	
 protected:
