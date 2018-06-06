@@ -6,6 +6,13 @@
 void AEyH_GameMode::BeginPlay()
 {
 	Super::BeginPlay();
+
+	TAGraphicalCommands.Append(GraphicalCommands, ARRAY_COUNT(GraphicalCommands));
+	TAPPCommands.Append(GraphicalCommands, ARRAY_COUNT(PPCommands));
+	TAAACommands.Append(GraphicalCommands, ARRAY_COUNT(AACommands));
+	TAShadowCommands.Append(GraphicalCommands, ARRAY_COUNT(ShadowCommands));
+	TAFPSCommands.Append(GraphicalCommands, ARRAY_COUNT(FPSCommands));
+
 	ChangeMenuWidget(StartingWidgetClass);
 }
 
@@ -28,4 +35,59 @@ void AEyH_GameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass)
 			CurrentWidget->AddToViewport();
 		}
 	}
+}
+
+void AEyH_GameMode::ChangeGraphicSetting(GraphicLabel graphicLabel, bool increase) {
+	TArray <FString> commandList;
+	int32 commandIndex;
+
+	//index
+	switch (graphicLabel)
+	{
+	case Graphical:
+		increase ? ++GraphicalIndex : --GraphicalIndex;
+		commandList = TAGraphicalCommands;
+		GraphicalIndex = (GraphicalIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(GraphicalIndex < 0) ? 0 : GraphicalIndex;
+		commandIndex = GraphicalIndex;
+		break;
+
+	case PP:
+		increase ? ++PPIndex : --PPIndex;
+		commandList = TAPPCommands;
+		PPIndex = (PPIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(PPIndex < 0) ? 0 : PPIndex;
+		commandIndex = PPIndex;
+		break;
+
+	case AA:
+		increase ? ++AAIndex : --AAIndex;
+		commandList = TAAACommands;
+		AAIndex = (AAIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(AAIndex < 0) ? 0 : AAIndex;
+		commandIndex = AAIndex;
+		break;
+
+	case Shadow:
+		increase ? ++ShadowIndex : --ShadowIndex;
+		commandList = TAShadowCommands;
+		ShadowIndex = (ShadowIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(ShadowIndex < 0) ? 0 : ShadowIndex;
+		commandIndex = ShadowIndex;
+		break;
+
+	case FPS:
+		increase ? ++FPSIndex : --FPSIndex;
+		commandList = TAFPSCommands;
+		FPSIndex = (FPSIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(FPSIndex < 0) ? 0 : FPSIndex;
+		commandIndex = FPSIndex;
+		break;
+
+	default:
+		break;
+	}
+
+	//command
+	GetWorld()->Exec(GetWorld(), *(commandList[commandIndex]));
 }
