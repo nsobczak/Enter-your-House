@@ -33,6 +33,10 @@ public:
 	////labels
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Game_Settings") FText MainSettingsLabel[4];
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Game_Settings") FText FPSSettingsLabel[4];
+	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString MainSettingsLabel[4] = { "Low", "Medium","High","Ultra" };
+	UPROPERTY(BlueprintReadOnly) TArray<FText> TAMainSettingsLabel;
+	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString FPSSettingsLabel[4] = { "15Hz", "30Hz","60Hz","144Hz" };
+	UPROPERTY(BlueprintReadOnly) TArray<FText> TAFPSSettingsLabel;
 
 	//commands
 	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString GraphicalCommands[4] = { "r.ScreenPercentage 25", "r.ScreenPercentage 50","r.ScreenPercentage 75","r.ScreenPercentage 100" };

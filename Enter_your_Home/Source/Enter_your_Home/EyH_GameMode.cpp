@@ -7,12 +7,29 @@ void AEyH_GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
+	//label
+	TArray<FString> tmpMainSettingsLabel;
+	tmpMainSettingsLabel.Append(MainSettingsLabel, ARRAY_COUNT(MainSettingsLabel));
+	for (size_t i = 0; i < tmpMainSettingsLabel.Num(); i++)
+	{
+		TAMainSettingsLabel.Add(FText::FromString(tmpMainSettingsLabel[i]));
+	}
+
+	TArray<FString> tmpFPSSettingsLabel;
+	tmpFPSSettingsLabel.Append(FPSSettingsLabel, ARRAY_COUNT(FPSSettingsLabel));
+	for (size_t i = 0; i < tmpFPSSettingsLabel.Num(); i++)
+	{
+		TAFPSSettingsLabel.Add(FText::FromString(tmpFPSSettingsLabel[i]));
+	}
+
+	//command
 	TAGraphicalCommands.Append(GraphicalCommands, ARRAY_COUNT(GraphicalCommands));
 	TAPPCommands.Append(GraphicalCommands, ARRAY_COUNT(PPCommands));
 	TAAACommands.Append(GraphicalCommands, ARRAY_COUNT(AACommands));
 	TAShadowCommands.Append(GraphicalCommands, ARRAY_COUNT(ShadowCommands));
 	TAFPSCommands.Append(GraphicalCommands, ARRAY_COUNT(FPSCommands));
 
+	//widget
 	ChangeMenuWidget(StartingWidgetClass);
 }
 
