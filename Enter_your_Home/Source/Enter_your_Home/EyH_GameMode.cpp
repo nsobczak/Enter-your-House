@@ -21,6 +21,13 @@ void AEyH_GameMode::BeginPlay()
 	{
 		TAFPSSettingsLabel.Add(FText::FromString(tmpFPSSettingsLabel[i]));
 	}
+	
+	TArray<FString> tmpResolutionLabel;
+	tmpResolutionLabel.Append(ResolutionLabel, ARRAY_COUNT(ResolutionLabel));
+	for (size_t i = 0; i < tmpResolutionLabel.Num(); i++)
+	{
+		TAResolutionLabel.Add(FText::FromString(tmpResolutionLabel[i]));
+	}
 
 	//command
 	TAGraphicalCommands.Append(GraphicalCommands, ARRAY_COUNT(GraphicalCommands));
@@ -28,6 +35,7 @@ void AEyH_GameMode::BeginPlay()
 	TAAACommands.Append(GraphicalCommands, ARRAY_COUNT(AACommands));
 	TAShadowCommands.Append(GraphicalCommands, ARRAY_COUNT(ShadowCommands));
 	TAFPSCommands.Append(GraphicalCommands, ARRAY_COUNT(FPSCommands));
+	TAResCommands.Append(ResCommands, ARRAY_COUNT(ResCommands));
 
 	//widget
 	ChangeMenuWidget(StartingWidgetClass);
@@ -99,6 +107,14 @@ void AEyH_GameMode::ChangeGraphicSetting(GraphicLabel graphicLabel, bool increas
 		FPSIndex = (FPSIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
 			(FPSIndex < 0) ? 0 : FPSIndex;
 		commandIndex = FPSIndex;
+		break;
+
+	case Res:
+		increase ? ++ResIndex : --ResIndex;
+		commandList = TAResCommands;
+		ResIndex = (ResIndex > commandList.Num() - 1) ? commandList.Num() - 1 :
+			(ResIndex < 0) ? 0 : ResIndex;
+		commandIndex = ResIndex;
 		break;
 
 	default:

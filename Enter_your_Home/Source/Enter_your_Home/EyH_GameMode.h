@@ -12,7 +12,7 @@
 UENUM(BlueprintType)        //"BlueprintType" is essential specifier
 enum GraphicLabel
 {
-	Graphical, PP, AA, Shadow, FPS
+	Graphical, PP, AA, Shadow, FPS, Res
 };
 
 UCLASS()
@@ -37,6 +37,8 @@ public:
 	UPROPERTY(BlueprintReadOnly) TArray<FText> TAMainSettingsLabel;
 	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString FPSSettingsLabel[4] = { "15Hz", "30Hz","60Hz","144Hz" };
 	UPROPERTY(BlueprintReadOnly) TArray<FText> TAFPSSettingsLabel;
+	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString ResolutionLabel[4] = { "800x600","1280x720", "1600x900", "1920x1080" };
+	UPROPERTY(BlueprintReadOnly) TArray<FText> TAResolutionLabel;
 
 	//commands
 	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString GraphicalCommands[4] = { "r.ScreenPercentage 25", "r.ScreenPercentage 50","r.ScreenPercentage 75","r.ScreenPercentage 100" };
@@ -49,6 +51,9 @@ public:
 	TArray<FString> TAShadowCommands;
 	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString FPSCommands[4] = { "t.MaxFPS 15","t.MaxFPS 30", "t.MaxFPS 60", "t.MaxFPS 144" };
 	TArray<FString> TAFPSCommands;
+	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString ResCommands[4] = { "r.SetRes 800x600w","r.SetRes 1280x720w", "r.SetRes 1600x900w", "r.SetRes 1920x1080w" };
+	TArray<FString> TAResCommands;
+	//1280x720w ou f
 
 	//indexes
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game_Settings")
@@ -61,6 +66,8 @@ public:
 		int32 ShadowIndex = 2;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game_Settings")
 		int32 FPSIndex = 2;
+	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game_Settings")
+		int32 ResIndex = 3;
 
 protected:
 	/** Called when the game starts. */
