@@ -2,6 +2,19 @@
 
 #include "EyH_GameMode.h"
 
+AEyH_GameMode::AEyH_GameMode(const class FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
+{
+	//DefaultPawnClass = AEyH_FPSCharacter::StaticClass();
+	//Blueprint'/Game/FPS/Blueprint/BPEyH_FPSCharacter.BPEyH_FPSCharacter'
+
+	// set default pawn class to our Blueprinted character
+	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnObject(TEXT("/Game/FPS/Blueprint/BPEyH_FPSCharacter"));
+	if (PlayerPawnObject.Succeeded())
+	{
+		DefaultPawnClass = PlayerPawnObject.Class;
+	}
+}
 
 void AEyH_GameMode::BeginPlay()
 {
@@ -21,7 +34,7 @@ void AEyH_GameMode::BeginPlay()
 	{
 		TAFPSSettingsLabel.Add(FText::FromString(tmpFPSSettingsLabel[i]));
 	}
-	
+
 	TArray<FString> tmpResolutionLabel;
 	tmpResolutionLabel.Append(ResolutionLabel, ARRAY_COUNT(ResolutionLabel));
 	for (size_t i = 0; i < tmpResolutionLabel.Num(); i++)
@@ -122,5 +135,6 @@ void AEyH_GameMode::ChangeGraphicSetting(GraphicLabel graphicLabel, bool increas
 	}
 
 	//command
-	GetWorld()->Exec(GetWorld(), *(commandList[commandIndex]));
+	if (commandIndex >= 0 && commandIndex < commandList.Num()) //check for safety
+		GetWorld()->Exec(GetWorld(), *(commandList[commandIndex]));
 }

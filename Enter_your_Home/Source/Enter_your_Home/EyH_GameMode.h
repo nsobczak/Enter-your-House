@@ -4,8 +4,10 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/GameModeBase.h"
+#include "Engine.h"
 #include "Blueprint/UserWidget.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
+//#include "EyH_FPSCharacter.h"
 #include "EyH_GameMode.generated.h"
 
 
@@ -19,6 +21,8 @@ UCLASS()
 class ENTER_YOUR_HOME_API AEyH_GameMode : public AGameModeBase
 {
 	GENERATED_BODY()
+
+	AEyH_GameMode(const FObjectInitializer& ObjectInitializer);  // Our added constructor
 
 public:
 	/** Remove the current menu widget and create a new one from the specified class, if provided. */
