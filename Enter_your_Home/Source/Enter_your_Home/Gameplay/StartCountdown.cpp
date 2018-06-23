@@ -63,6 +63,4 @@ void AStartCountdown::CountdownHasFinished_Implementation()
 	//Change to a special readout
 	CountdownText->SetText(countdownFinishedText);
 	isCountdownFinished = true;
-
-	//TODO: make non visible here	
 }
