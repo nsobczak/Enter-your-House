@@ -4,32 +4,56 @@
 
 
 // Sets default values
-AEyH_FPSCharacter::AEyH_FPSCharacter()
+AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
- 	// Set this character to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	// === CameraComponent === 
+	FPSCamera = ObjectInitializer.CreateDefaultSubobject<UCameraComponent>(this, TEXT("FirstPersonCamera"));
+	FPSCamera->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	FPSCamera->RelativeLocation = FVector(0, 0, 50.0f + BaseEyeHeight);// Position the camera a bit above the eyes
+	FPSCamera->bUsePawnControlRotation = true; // Allow the pawn to control rotation.
+
+	// === grabber ===
+	//Grabber = ObjectInitializer.CreateDefaultSubobject<UGrabber>(this, TEXT("Grabber"));
+	//AddOwnedComponent(Grabber);
+
+	// === Countdown === AActor
+	Countdown = ObjectInitializer.CreateDefaultSubobject<AStartCountdown>(this, TEXT("Countdown"));
+	Countdown->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	//Countdown->SetupAttachement(GetRootComponent());
+
+	//Countdown->SetRootComponent(ObjectInitializer.CreateDefaultSubobject<USceneComponent>(this, TEXT("SceneComponent")));
+	//Countdown->SetActorLocationAndRotation(FPSCamera->RelativeLocation,
+	//	FQuat::MakeFromEuler(FVector(0, 0, 180.0f)));
+	//Countdown->countdownFinishedText = FText::FromString("GO");
+	//Countdown->CountdownText->SetWorldSize(100.0f);
 }
+
 
 // Called when the game starts or when spawned
 void AEyH_FPSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-	
+
 }
 
 // Called every frame
 void AEyH_FPSCharacter::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
-
 }
+
+
+#pragma region Input
+//____________________________________________________________________________________
 
 // Called to bind functionality to input
 void AEyH_FPSCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputComponent)
 {
 	Super::SetupPlayerInputComponent(PlayerInputComponent);
-	
+
 	// set up gameplay key bindings
 	PlayerInputComponent->BindAxis("MoveForward", this, &AEyH_FPSCharacter::MoveForward);
 	PlayerInputComponent->BindAxis("MoveRight", this, &AEyH_FPSCharacter::MoveRight);
@@ -78,3 +102,6 @@ void AEyH_FPSCharacter::OnStopJump()
 {
 	bPressedJump = false;
 }
+
+//____________________________________________________________________________________
+#pragma endregion

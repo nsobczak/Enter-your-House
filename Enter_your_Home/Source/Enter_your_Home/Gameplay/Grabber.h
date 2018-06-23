@@ -19,7 +19,7 @@ class ENTER_YOUR_HOME_API UGrabber : public UActorComponent
 
 private:
 	UPROPERTY(EditAnywhere)
-		float reachLimit = 100;
+		float reachLimit = 400;
 
 	UPhysicsHandleComponent* physicsHandleComponent = nullptr;
 

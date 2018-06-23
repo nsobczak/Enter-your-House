@@ -13,18 +13,16 @@ class ENTER_YOUR_HOME_API AStartCountdown : public AActor
 {
 	GENERATED_BODY()
 
-public:
-	AStartCountdown();
+	AStartCountdown(const FObjectInitializer& ObjectInitializer);
 
+public:
 	//How often, in seconds, should the countdown be called
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		float timerUpdateFreq = 1.0f;
 	//How long the countdown will run
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		int32 countdownTime = 3;
-	/*UPROPERTY(EditAnywhere)
-		float _worldSize_ = 150.0f;
-*/
+
 	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		FText countdownFinishedText;
 	UPROPERTY(BlueprintReadWrite)

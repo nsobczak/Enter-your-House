@@ -4,15 +4,17 @@
 
 
 // Sets default values
-AStartCountdown::AStartCountdown()
+AStartCountdown::AStartCountdown(const class FObjectInitializer& ObjectInitializer)
+	: Super(ObjectInitializer)
 {
 	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
-	PrimaryActorTick.bCanEverTick = false;
+	PrimaryActorTick.bCanEverTick = true;
 
 	CountdownText = CreateDefaultSubobject<UTextRenderComponent>(TEXT("CountdownNumber"));
 	CountdownText->SetHorizontalAlignment(EHTA_Center);
-	//CountdownText->SetWorldSize(_worldSize_);
 	RootComponent = CountdownText;
+
+	UE_LOG(LogTemp, Warning, TEXT("AStartCountdown created"));
 }
 
 // Called when the game starts or when spawned
@@ -20,7 +22,7 @@ void AStartCountdown::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UE_LOG(LogTemp, Warning, TEXT("AStartCountdown"));
+	UE_LOG(LogTemp, Warning, TEXT("AStartCountdown BeginPlay"));
 
 	isCountdownFinished = false;
 	//adding a call to update function
@@ -34,6 +36,7 @@ void AStartCountdown::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	UE_LOG(LogTemp, Warning, TEXT("AStartCountdown Tick"));
 }
 
 void AStartCountdown::UpdateTimerDisplay()

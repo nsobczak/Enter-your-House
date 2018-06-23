@@ -5,8 +5,9 @@
 AEyH_GameMode::AEyH_GameMode(const class FObjectInitializer& ObjectInitializer)
 	: Super(ObjectInitializer)
 {
+	PrimaryActorTick.bCanEverTick = true;
+
 	//DefaultPawnClass = AEyH_FPSCharacter::StaticClass();
-	//Blueprint'/Game/FPS/Blueprint/BPEyH_FPSCharacter.BPEyH_FPSCharacter'
 
 	// set default pawn class to our Blueprinted character
 	static ConstructorHelpers::FClassFinder<APawn> PlayerPawnObject(TEXT("/Game/FPS/Blueprint/BPEyH_FPSCharacter"));
@@ -14,6 +15,8 @@ AEyH_GameMode::AEyH_GameMode(const class FObjectInitializer& ObjectInitializer)
 	{
 		DefaultPawnClass = PlayerPawnObject.Class;
 	}
+
+	HUDClass = AFPSHUD::StaticClass();
 }
 
 void AEyH_GameMode::BeginPlay()
@@ -77,7 +80,7 @@ void AEyH_GameMode::ChangeMenuWidget(TSubclassOf<UUserWidget> NewWidgetClass)
 
 void AEyH_GameMode::ChangeGraphicSetting(GraphicLabel graphicLabel, bool increase) {
 	TArray <FString> commandList;
-	int32 commandIndex;
+	int32 commandIndex = 0;
 
 	//index
 	switch (graphicLabel)

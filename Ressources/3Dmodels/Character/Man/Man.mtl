@@ -1,0 +1,98 @@
+# Exported from Fuse 1.3.0
+
+newmtl Beard
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Beard_diffuse.png
+map_Ks Man_Beard_specular.png
+bump Man_Beard_normal.png
+map_Ns Man_Beard_gloss.png
+
+newmtl Body
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Body_diffuse.png
+map_Ks Man_Body_specular.png
+bump Man_Body_normal.png
+map_Ns Man_Body_gloss.png
+
+newmtl Moustache
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Moustache_diffuse.png
+map_Ks Man_Moustache_specular.png
+bump Man_Moustache_normal.png
+map_Ns Man_Moustache_gloss.png
+
+newmtl Eyewear
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Eyewear_diffuse.png
+map_Ks Man_Eyewear_specular.png
+bump Man_Eyewear_normal.png
+map_Ns Man_Eyewear_gloss.png
+
+newmtl Shoes
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Shoes_diffuse.png
+map_Ks Man_Shoes_specular.png
+bump Man_Shoes_normal.png
+map_Ns Man_Shoes_gloss.png
+
+newmtl Hair
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Hair_diffuse.png
+map_Ks Man_Hair_specular.png
+bump Man_Hair_normal.png
+map_Ns Man_Hair_gloss.png
+
+newmtl Bottom
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Bottom_diffuse.png
+map_Ks Man_Bottom_specular.png
+bump Man_Bottom_normal.png
+map_Ns Man_Bottom_gloss.png
+
+newmtl Top
+illum 4
+Kd 1.00 1.00 1.00
+Ka 0.00 0.00 0.00
+Tf 1.00 1.00 1.00
+Ni 1.00
+Ks 1.00 1.00 1.00
+map_Kd Man_Top_diffuse.png
+map_Ks Man_Top_specular.png
+bump Man_Top_normal.png
+map_Ns Man_Top_gloss.png
+
