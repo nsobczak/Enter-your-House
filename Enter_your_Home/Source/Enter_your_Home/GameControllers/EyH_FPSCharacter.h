@@ -7,6 +7,7 @@
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
 #include "Camera/CameraComponent.h"
+#include "Runtime/Core/Public/Math/Vector.h"
 #include "Gameplay/StartCountdown.h"
 #include "Gameplay/Grabber.h"
 #include "ConstructorHelpers.h"
@@ -38,8 +39,6 @@ public:
 		UCameraComponent* FPSCamera;
 	UPROPERTY(VisibleAnywhere)
 		UGrabber* Grabber;	
-	UPROPERTY(VisibleAnywhere)
-		AStartCountdown* Countdown;
 
 	// === Input ===
 	/**handles moving forward/backward*/

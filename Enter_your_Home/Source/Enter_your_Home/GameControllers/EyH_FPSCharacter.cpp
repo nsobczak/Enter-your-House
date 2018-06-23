@@ -9,10 +9,13 @@ AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer
 {
 	PrimaryActorTick.bCanEverTick = true;
 
+	RootComponent = GetCapsuleComponent();
+
 	// === CameraComponent === 
 	FPSCamera = ObjectInitializer.CreateDefaultSubobject<UCameraComponent>(this, TEXT("FirstPersonCamera"));
 	FPSCamera->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
 	FPSCamera->RelativeLocation = FVector(0, 0, 50.0f + BaseEyeHeight);// Position the camera a bit above the eyes
+	FPSCamera->RelativeRotation.Pitch = 0;
 	FPSCamera->bUsePawnControlRotation = true; // Allow the pawn to control rotation.
 
 	// === grabber ===
@@ -20,15 +23,10 @@ AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer
 	//AddOwnedComponent(Grabber);
 
 	// === Countdown === AActor
-	Countdown = ObjectInitializer.CreateDefaultSubobject<AStartCountdown>(this, TEXT("Countdown"));
-	Countdown->AttachToComponent(GetCapsuleComponent(), FAttachmentTransformRules::KeepRelativeTransform);
+	//Countdown = ObjectInitializer.CreateDefaultSubobject<AStartCountdown>(this, TEXT("Countdown_test"));
+	//Countdown->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
+	//Countdown->SetActorTickEnabled(true);
 	//Countdown->SetupAttachement(GetRootComponent());
-
-	//Countdown->SetRootComponent(ObjectInitializer.CreateDefaultSubobject<USceneComponent>(this, TEXT("SceneComponent")));
-	//Countdown->SetActorLocationAndRotation(FPSCamera->RelativeLocation,
-	//	FQuat::MakeFromEuler(FVector(0, 0, 180.0f)));
-	//Countdown->countdownFinishedText = FText::FromString("GO");
-	//Countdown->CountdownText->SetWorldSize(100.0f);
 }
 
 

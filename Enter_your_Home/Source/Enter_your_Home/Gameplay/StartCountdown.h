@@ -13,7 +13,7 @@ class ENTER_YOUR_HOME_API AStartCountdown : public AActor
 {
 	GENERATED_BODY()
 
-	AStartCountdown(const FObjectInitializer& ObjectInitializer);
+		AStartCountdown(const FObjectInitializer& ObjectInitializer);
 
 public:
 	//How often, in seconds, should the countdown be called
@@ -28,7 +28,7 @@ public:
 	UPROPERTY(BlueprintReadWrite)
 		bool isCountdownFinished = false;
 
-	UPROPERTY(EditAnywhere)
+	UPROPERTY(EditAnywhere, BlueprintReadWrite)
 		UTextRenderComponent* CountdownText;
 	FTimerHandle CountdownTimerHandle;
 
