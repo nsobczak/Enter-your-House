@@ -6,10 +6,12 @@
 #include "Engine.h" 
 #include "GameFramework/Character.h"
 #include "GameFramework/CharacterMovementComponent.h"
+#include "GameFramework/Actor.h"
 #include "Camera/CameraComponent.h"
 #include "Runtime/Core/Public/Math/Vector.h"
 #include "Gameplay/StartCountdown.h"
 #include "Gameplay/Grabber.h"
+#include "Tests/MyActorComponent.h"
 #include "ConstructorHelpers.h"
 #include "EyH_FPSCharacter.generated.h"
 
@@ -39,6 +41,8 @@ public:
 		UCameraComponent* FPSCamera;
 	UPROPERTY(VisibleAnywhere)
 		UGrabber* Grabber;	
+	UPROPERTY(VisibleAnywhere)
+		UMyActorComponent* MyActorComponent;
 
 	// === Input ===
 	/**handles moving forward/backward*/

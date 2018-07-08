@@ -19,14 +19,18 @@ AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer
 	FPSCamera->bUsePawnControlRotation = true; // Allow the pawn to control rotation.
 
 	// === grabber ===
-	//Grabber = ObjectInitializer.CreateDefaultSubobject<UGrabber>(this, TEXT("Grabber"));
-	//AddOwnedComponent(Grabber);
+	Grabber = ObjectInitializer.CreateDefaultSubobject<UGrabber>(this, TEXT("Grabber_auto"));
+	if (Grabber)
+	{
+		this->AddOwnedComponent(Grabber);
+	}
 
-	// === Countdown === AActor
-	//Countdown = ObjectInitializer.CreateDefaultSubobject<AStartCountdown>(this, TEXT("Countdown_test"));
-	//Countdown->AttachToComponent(RootComponent, FAttachmentTransformRules::KeepRelativeTransform);
-	//Countdown->SetActorTickEnabled(true);
-	//Countdown->SetupAttachement(GetRootComponent());
+	// === grabber ===
+	MyActorComponent = ObjectInitializer.CreateDefaultSubobject<UMyActorComponent>(this, TEXT("MyActorComponent_auto"));
+	if (MyActorComponent)
+	{
+		this->AddOwnedComponent(MyActorComponent);
+	}
 }
 
 
@@ -34,7 +38,6 @@ AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer
 void AEyH_FPSCharacter::BeginPlay()
 {
 	Super::BeginPlay();
-
 }
 
 // Called every frame

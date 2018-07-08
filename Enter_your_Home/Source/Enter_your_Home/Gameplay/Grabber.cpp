@@ -12,6 +12,9 @@ UGrabber::UGrabber()
 	// Set this component to be initialized when the game starts, and to be ticked every frame.  You can turn these features
 	// off to improve performance if you don't need them.
 	PrimaryComponentTick.bCanEverTick = true;
+
+	UE_LOG(LogTemp, Log, TEXT("UGrabber created"));
+
 }
 
 
@@ -25,6 +28,7 @@ void UGrabber::FindPhysicsHandleComponent()
 	this->physicsHandleComponent = GetOwner()->FindComponentByClass<UPhysicsHandleComponent>();
 	if (nullptr == this->physicsHandleComponent)
 		UE_LOG(LogTemp, Error, TEXT("%s missing physics handle component"), *(GetOwner()->GetName()));
+
 }
 
 // look for and bind action inputComponent
@@ -117,7 +121,7 @@ void UGrabber::TickComponent(float DeltaTime, ELevelTick TickType, FActorCompone
 {
 	Super::TickComponent(DeltaTime, TickType, ThisTickFunction);
 
-	if (this->physicsHandleComponent->GrabbedComponent)
+	if (this->physicsHandleComponent && this->physicsHandleComponent->GrabbedComponent)
 		this->physicsHandleComponent->SetTargetLocation(getReachLineTraceEnd());
 
 }
