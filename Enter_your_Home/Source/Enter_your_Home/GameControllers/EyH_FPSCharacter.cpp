@@ -24,13 +24,6 @@ AEyH_FPSCharacter::AEyH_FPSCharacter(const FObjectInitializer& ObjectInitializer
 	{
 		this->AddOwnedComponent(Grabber);
 	}
-
-	// === grabber ===
-	MyActorComponent = ObjectInitializer.CreateDefaultSubobject<UMyActorComponent>(this, TEXT("MyActorComponent_auto"));
-	if (MyActorComponent)
-	{
-		this->AddOwnedComponent(MyActorComponent);
-	}
 }
 
 

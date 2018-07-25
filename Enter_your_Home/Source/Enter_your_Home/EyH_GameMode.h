@@ -7,15 +7,16 @@
 #include "Engine.h"
 #include "Blueprint/UserWidget.h"
 #include "Runtime/Core/Public/Math/UnrealMathUtility.h"
+#include "Runtime/Engine/Classes/Engine/World.h"
 #include "HUD/FPSHUD.h"
 #include "EyH_GameMode.generated.h"
 
 
 UENUM(BlueprintType)        //"BlueprintType" is essential specifier
-enum GraphicLabel
-{
-	Graphical, PP, AA, Shadow, FPS, Res
-};
+enum GraphicLabel { Graphical, PP, AA, Shadow, FPS, Res };
+
+UENUM(BlueprintType)
+enum ActionLabel { Jump, Grab };
 
 UCLASS()
 class ENTER_YOUR_HOME_API AEyH_GameMode : public AGameModeBase
@@ -33,6 +34,9 @@ public:
 	UFUNCTION(BlueprintCallable, Category = "Game_Settings")
 		void ChangeGraphicSetting(GraphicLabel graphicLabel, bool increase);
 
+	///** Listen to new key*/
+	//UFUNCTION(BlueprintCallable, Category = "Game_Settings")
+	//	void ChangeActionKey(ActionLabel actionLabel);
 
 	////labels
 	//UPROPERTY(EditAnywhere, BlueprintReadOnly, Category = "Game_Settings") FText MainSettingsLabel[4];
@@ -72,6 +76,12 @@ public:
 		int32 FPSIndex = 2;
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game_Settings")
 		int32 ResIndex = 3;
+
+	UPROPERTY(EditAnywhere, Category = "Game_Settings") FString ActionNames[2] = { "Jump","Grab" };
+	UPROPERTY(BlueprintReadOnly) TArray<FText> TAActionNames;
+
+	//UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Game_Settings")
+	//	FKey InputActionArray[2] = { "Jump","Grab" };
 
 protected:
 	/** Called when the game starts. */

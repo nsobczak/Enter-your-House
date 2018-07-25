@@ -141,3 +141,45 @@ void AEyH_GameMode::ChangeGraphicSetting(GraphicLabel graphicLabel, bool increas
 	if (commandIndex >= 0 && commandIndex < commandList.Num()) //check for safety
 		GetWorld()->Exec(GetWorld(), *(commandList[commandIndex]));
 }
+
+
+//void ChangeActionKey(ActionLabel actionLabel) {
+//	//1- change status to listening on ui and add countdown
+//	//2- listen to key while none was pressed or countdown not finished
+//	//3- when one of those 2 conditions is true, save new key
+//	APlayerController::controller
+//	APlayerController* currentPlayerController = GetPlayerControllerFromNetId(GetWorld(), 0);
+//	if (currentPlayerController == nullptr) return;
+//
+//	TArray<FKey> allKey;
+//	EKeys::GetAllKeys(allKey);
+//
+//	for (size_t i = 0; i < allKey.Num; ++i)
+//	{
+//		FKey key = allKey[i];
+//
+//		if (currentPlayerController->WasInputKeyJustPressed(key))
+//		{
+//			FString keyName = key.ToString();
+//			UE_LOG(LogTemp, Log, TEXT("key pressed %s"), *keyName);
+//			break;
+//		}
+//	}
+//
+//	/*switch (actionLabel)
+//	{
+//	case Jump:
+//		key = InputActionArray[0];
+//		break;
+//	case Grab:
+//		key = InputActionArray[1];
+//		break;
+//	default:
+//		break;
+//	}*/
+//
+//
+//	// change status to listening on ui and add countdown
+//
+//
+//}
